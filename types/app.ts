@@ -52,10 +52,25 @@ export type MessageMore = {
   tokens: number
   latency: number | string
 }
+export type CitationItem = {
+  content: string
+  data_source_type: string
+  dataset_name: string
+  dataset_id: string
+  document_id: string
+  document_name: string
+  hit_count: number
+  index_node_hash: string
+  segment_id: string
+  segment_position: number
+  score: number
+  word_count: number
+}
 
 export type IChatItem = {
   id: string
   content: string
+  citation?: CitationItem[]
   /**
    * Specific message type
    */

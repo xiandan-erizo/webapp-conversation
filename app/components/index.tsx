@@ -140,6 +140,7 @@ const Main: FC = () => {
             agent_thoughts: addFileInfos(item.agent_thoughts ? sortAgentSorts(item.agent_thoughts) : item.agent_thoughts, item.message_files),
             feedback: item.feedback,
             isAnswer: true,
+            citation: item.retriever_resources,
             message_files: item.message_files?.filter((file: any) => file.belongs_to === 'assistant') || [],
           })
         })
@@ -498,6 +499,7 @@ const Main: FC = () => {
         }
         // not support show citation
         // responseItem.citation = messageEnd.retriever_resources
+        responseItem.citation = messageEnd.metadata?.retriever_resources || []
         const newListWithAnswer = produce(
           getChatList().filter(item => item.id !== responseItem.id && item.id !== placeholderAnswerId),
           (draft) => {
